@@ -10,7 +10,7 @@ class Categorycontroller extends Controller
     function index()
     {
         $arr['category'] = Category::all(); 
-        return view('Admin.viewcategory')->with($arr);
+        return view('Admin.category.viewcategory')->with($arr);
     }
 
     public function ucategory($id)

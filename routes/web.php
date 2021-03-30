@@ -26,67 +26,67 @@ Route::get('AdminPanel',function(){
 });
 
 Route::get('/orderdetails',function(){
-    return view('admin.vieworder');
+    return view('admin.orderpage.vieworder');
 });
 
 Route::get('Add-Category',function(){
-    return view('admin.addcategory');
+    return view('admin.category.addcategory');
 });
 
 Route::get('view-category',function(){
-    return view('admin.viewcategory');
+    return view('admin.category.viewcategory');
 });
 
 Route::get('update-category',function(){
-    return view('admin.updatecategory');
+    return view('admin.category.updatecategory');
 });
 
-Route::get('add-subcategory',function(){
-    return view('admin.addsubcategory');
+Route::get('addsubcategory',function(){
+    return view('admin.subcategory.addsubcategory');
 });
 
 Route::get('view-subcategory',function(){
-    return view('admin.viewsubcategory');
+    return view('admin.subcategory.viewsubcategory');
 });
 
 Route::get('update-subcategory',function(){
-    return view('admin.updatesubcategory');
+    return view('admin.subcategory.updatesubcategory');
 });
 
-Route::get('add-product',function(){
-    return view('admin.addproduct');
+Route::get('addproduct',function(){
+    return view('admin.product.addproduct');
 });
 
 Route::get('view-product',function(){
-    return view('admin.viewproduct');
+    return view('admin.product.viewproduct');
 });
 
 Route::get('update-product',function(){
-    return view('admin.updateproduct');
+    return view('admin.product.updateproduct');
 });
 
 Route::get('addcolor',function(){
-    return view('admin.addcolor');
+    return view('admin.color.addcolor');
 });
 
 Route::get('view-color',function(){
-    return view('admin.viewcolor');
+    return view('admin.color.viewcolor');
 });
 
 Route::get('update-color',function(){
-    return view('admin.updatecolor');
+    return view('admin.color.updatecolor');
 });
 
 Route::get('addbrand',function(){
-    return view('admin.addbrand');
+    return view('admin.brand.addbrand');
 });
 
 Route::get('view-brand',function(){
-    return view('admin.viewbrand');
+    return view('admin.brand.viewbrand');
 });
 
 Route::get('update-brand',function(){
-    return view('admin.updatebrand');
+    return view('admin.brand.updatebrand');
 });
 
 //Admin

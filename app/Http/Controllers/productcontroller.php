@@ -20,13 +20,13 @@ class productcontroller extends Controller
         $arr1['Subcategory'] = Subcategory::all();
         $arr2['Color'] = color::all();
         $arr3['Brand'] = brand::all();
-        return view('Admin.addproduct')->with($arr)->with($arr1)->with($arr2)->with($arr3);
+        return view('/admin.product.addproduct')->with($arr)->with($arr1)->with($arr2)->with($arr3);
     }
 
     public function view()
     {
         $arr['product'] = Product::all(); 
-        return view('Admin.viewproduct')->with($arr);
+        return view('/admin.product.viewproduct')->with($arr);
     }
 
     public function uproduct($id)
@@ -36,7 +36,7 @@ class productcontroller extends Controller
         $arr3['Color'] = color::all();
         $arr4['Brand'] = brand::all();
         $arr['product'] = DB::select('select * from product where id = ?',[$id]); 
-        return view("/admin.updateproduct")->with($arr)->with($arr1)->with($arr2)->with($arr3)->with($arr4);
+        return view("/admin.product.updateproduct")->with($arr)->with($arr1)->with($arr2)->with($arr3)->with($arr4);
     }
 
     function upproduct(Request $req,$id)

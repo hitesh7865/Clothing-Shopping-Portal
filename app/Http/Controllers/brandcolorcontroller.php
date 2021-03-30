@@ -11,25 +11,25 @@ class brandcolorcontroller extends Controller
     function index()
     {
         $arr['color'] = color::all(); 
-        return view('Admin.viewcolor')->with($arr);
+        return view('/admin.color.viewcolor')->with($arr);
     }
 
     public function view()
     { 
         $arr['brand'] = brand::all(); 
-        return view('Admin.viewbrand')->with($arr);
+        return view('/admin.brand.viewbrand')->with($arr);
     }
 
     public function click_edit_color($id)
     {
         $arr['color'] = DB::select('select * from color where id = ?',[$id]); 
-        return view("/admin.updatecolor")->with($arr);
+        return view("/admin.color.updatecolor")->with($arr);
     }
 
     public function click_edit_brand($id)
     {
         $arr['brand'] = DB::select('select * from brand where id = ?',[$id]); 
-        return view("/admin.updatebrand")->with($arr);
+        return view("/admin.brand.updatebrand")->with($arr);
     }
 
     public function click_delete_color($id)

@@ -20,7 +20,7 @@ class AdminController extends Controller
 {
     function index()
     {
-        return view('admin.adminlogin');
+        return view('/admin.adminlogin');
     }
 
     function logs(Request $request)
@@ -41,11 +41,11 @@ class AdminController extends Controller
             $arr['orderdata'] = DB::table('orderdata')
                                 ->where('status','=','0')
                                 ->get();
-            return view('admin.adminindex')->with($arr)->with($ctu)->with($ctp)->with($totalsale)->with($cto);
+            return view('/admin.adminindex')->with($arr)->with($ctu)->with($ctp)->with($totalsale)->with($cto);
         }
         else
         {
-            return redirect('Login');
+            return redirect('/Login');
         }
     }
 
@@ -57,7 +57,7 @@ class AdminController extends Controller
         $data = array('Cname'=>$cname,'Discription'=>$disc);
         $dt = DB::table('Category')->insert($data);
 
-        return redirect('Add-Category');
+        return redirect('/Add-Category');
     }
 
     function add_subcategory(Request $req)
@@ -69,7 +69,7 @@ class AdminController extends Controller
         $data = array('SubCategory_name'=>$scname,'Discription'=>$Discription,'Category_id'=>$cid);
         $dt = DB::table('subcategory')->insert($data);
 
-        return redirect('addsubcategory');
+        return redirect('/addsubcategory');
     }
 
     function addproduct(Request $req)
@@ -101,7 +101,7 @@ class AdminController extends Controller
         
         $form_data = array('category_id'=>$category_id,'subcategory_id'=>$subcategory_id,'product_name'=>$Product_name,'product_brand'=>$Product_brand,'price'=>$price,'description'=> $Discription ,'color'=> $Color,'size'=>$Size,'stock'=>$stock ,'posting_date'=>$pdate,'photo'=>$pt);
         DB::table('Product')->insert($form_data);
-        return redirect('addproduct');
+        return redirect('/addproduct');
                 
     }
 
@@ -112,7 +112,7 @@ class AdminController extends Controller
         $data = array('brand_name'=>$cname);
         $dt = DB::table('brand')->insert($data);
 
-        return redirect('addbrand');
+        return redirect('/addbrand');
     }
     
     function add_color(Request $req)
@@ -122,7 +122,7 @@ class AdminController extends Controller
         $data = array('Color'=>$cname);
         $dt = DB::table('color')->insert($data);
 
-        return redirect('addcolor');
+        return redirect('/addcolor');
     }
 
     public function vieworder($id)
@@ -133,7 +133,7 @@ class AdminController extends Controller
             ->select('orderitem.qty','orderitem.order_id','product.photo','product.Product_name','product.Price')
             ->get();
 
-        return view('admin.vieworder')->with($arr);
+        return view('/admin.order.vieworder')->with($arr);
     }
 
     function updateorder($id)

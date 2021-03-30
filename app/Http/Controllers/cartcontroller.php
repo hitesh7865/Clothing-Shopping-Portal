@@ -96,7 +96,7 @@ class cartcontroller extends Controller
                     $subtot = $d->qty * $d->Price;
                     $tot = $tot + $subtot;
                 }
-                return view('User.cart',compact('data','tot','ct'));
+                return view('/User.cart',compact('data','tot','ct'));
         }
     }
 
@@ -130,7 +130,7 @@ class cartcontroller extends Controller
                 $subtot = $d->qty * $d->Price;
                 $tot = $tot + $subtot;
             }
-            return view('User.cart',compact('data','tot','ct'));
+            return view('/User.cart',compact('data','tot','ct'));
         }
         
     }

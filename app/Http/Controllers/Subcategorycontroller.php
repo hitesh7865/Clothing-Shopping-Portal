@@ -11,20 +11,20 @@ class Subcategorycontroller extends Controller
     function index()
     {
         $arr['category'] = Category::all(); 
-        return view('Admin.addsubcategory')->with($arr);
+        return view('/admin.subcategory.addsubcategory')->with($arr);
     }
 
     public function view()
     { 
         $arr['subcategory'] = Subcategory::all(); 
-        return view('Admin.viewsubcategory')->with($arr);
+        return view('/admin.subcategory.viewsubcategory')->with($arr);
     }
 
     public function ucategory($id)
     {
         $arr1['category'] = DB::select('select * from category');
         $arr['subcategory'] = DB::select('select * from subcategory where id = ?',[$id]); 
-        return view("/admin.updatesubcategory")->with($arr)->with($arr1);
+        return view("/admin.subcategory.updatesubcategory")->with($arr)->with($arr1);
     }
 
     function upcategory(Request $req,$id)
