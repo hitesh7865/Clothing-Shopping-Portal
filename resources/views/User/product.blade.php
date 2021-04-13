@@ -84,7 +84,7 @@
 			<div class="container">
 				<!-- menu -->
 				<ul class="main-menu">
-					<li><a href="user">Home</a></li>
+					<li><a href="/user">Home</a></li>
 					<li><a href="/user-contact">Contact Page</a></li>
 				</ul>
 			</div>
@@ -96,10 +96,9 @@
 	<!-- Page info -->
 	<div class="page-top-info">
 		<div class="container">
-			<h4>Category PAge</h4>
+			<h4>Category Page</h4>
 			<div class="site-pagination">
-				<a href="index">Home</a> /
-				<a href="">Shop</a>
+				<a href="/user">Home</a>	
 			</div>
 		</div>
 	</div>

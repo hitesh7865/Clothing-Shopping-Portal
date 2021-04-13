@@ -40,14 +40,14 @@
                                                 <td><img src="{{ asset('uploads/productimage/'.$d->photo) }}" height="200" width="150" alt="image"></td>
                                                 <td>{{ $d->Price }}</td> 
                                             </tr>
-                                        @endforeach
+                                        
                                             <tr>
                                                 <form action="/updateorder/{{ $d->order_id }}" role="form" method="post"> 
                                                 @csrf
                                                     <input type="submit"class="btn btn-lg btn-success" name="update" value="Dispatch" />
                                                 </form>
                                             </tr>
-                                        
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

@@ -8,7 +8,7 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard/Add Product</li>
                         </ol>
-                        <form role="form" action="/addproduct" enctype="multipart/form-data" method="post">
+                        <form role="form" action="/add-product" enctype="multipart/form-data" method="post">
                         @csrf
                         <div class="form-group row">
                                 <label class="col-xl-3">Category<i class="text-danger">*</i></label>
@@ -146,13 +146,13 @@
  
                             <div class="text-center">
                                 <div class="col-xl-8">
-                                    <input type="submit" id="add" class="btn btn-lg btn-success" value="Save">
+                                    <input type="submit" id="add" class="btn btn-lg btn-success" value="Save"/>
                                     <input type="reset" class="btn btn-lg btn-danger" name="Reset"/>                                
                                 </div>   
                             </div>
                         </form>
                         <div class="text-right"> 
-                            <a href="/view-product"><input type="button" style="background-color:purple" class="btn btn-lg btn-success" name="View" value="View Categories"/></a>
+                            <a href="/view-product"><input type="button" style="background-color:purple" class="btn btn-lg btn-success" name="View" value="View Product"/></a>
                         </div>
                 </div>
                 </main>

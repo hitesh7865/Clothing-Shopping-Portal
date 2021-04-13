@@ -160,7 +160,7 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::post('/logs','AdminController@logs');
 Route::post('/add_category','AdminController@add_category');
 Route::post('/add_subcategory','AdminController@add_subcategory');
-Route::post('/addproduct','AdminController@addproduct');
+Route::post('/add-product','AdminController@addproduct');
 Route::post('/add_color','AdminController@add_color');
 Route::post('/add_brand','AdminController@add_brand');
 Route::get('/orderdetails/{id}','AdminController@vieworder');

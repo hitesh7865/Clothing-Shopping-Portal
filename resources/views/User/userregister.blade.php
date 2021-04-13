@@ -73,8 +73,8 @@
 	</div>
 	<script>
 	document.querySelector('.register').onclick=function(){
-		var password = document.querySelector('.input-text').value,
-			confirmpassword = document.querySelector('.input-text').value;
+		var password = document.querySelectbyid('#password').value,
+			confirmpassword = document.querySelectbyid('#comfirm_password').value;
 
 			if(password != confirmpassword){
 				alert("Password Didn't Match");

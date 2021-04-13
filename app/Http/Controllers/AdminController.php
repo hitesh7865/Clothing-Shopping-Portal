@@ -101,6 +101,7 @@ class AdminController extends Controller
         
         $form_data = array('category_id'=>$category_id,'subcategory_id'=>$subcategory_id,'product_name'=>$Product_name,'product_brand'=>$Product_brand,'price'=>$price,'description'=> $Discription ,'color'=> $Color,'size'=>$Size,'stock'=>$stock ,'posting_date'=>$pdate,'photo'=>$pt);
         DB::table('Product')->insert($form_data);
+        
         return redirect('/addproduct');
                 
     }
@@ -133,7 +134,7 @@ class AdminController extends Controller
             ->select('orderitem.qty','orderitem.order_id','product.photo','product.Product_name','product.Price')
             ->get();
 
-        return view('/admin.order.vieworder')->with($arr);
+        return view('/admin.orderpages.vieworder')->with($arr);
     }
 
     function updateorder($id)

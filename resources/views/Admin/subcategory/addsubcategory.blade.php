@@ -56,7 +56,7 @@
                         </div>
                     </form>
                     <div class="text-right"> 
-                        <a href="/view-subcategory"><input type="submit" style="background-color:purple" class="btn btn-lg btn-success" name="View" value="View Categories"/></a>
+                        <a href="/view-subcategory"><input type="submit" style="background-color:purple" class="btn btn-lg btn-success" name="View" value="View Sub-categories"/></a>
                     </div>
                 </div>
                 </main>

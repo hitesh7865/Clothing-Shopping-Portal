@@ -85,7 +85,7 @@
 			<div class="container">
 				<!-- menu -->
 				<ul class="main-menu">
-					<li><a href="index">Home</a></li>
+					<li><a href="/user">Home</a></li>
 					<li><a href="#">Contact Page</a></li>
 				</ul>
 			</div>

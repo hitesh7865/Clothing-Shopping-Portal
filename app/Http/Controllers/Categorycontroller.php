@@ -16,7 +16,7 @@ class Categorycontroller extends Controller
     public function ucategory($id)
     {
         $arr['category'] = DB::select('select * from category where id = ?',[$id]); 
-        return view("/admin.updatecategory")->with($arr);
+        return view("/admin.category.updatecategory")->with($arr);
     }
 
     function upcategory(Request $req,$id)

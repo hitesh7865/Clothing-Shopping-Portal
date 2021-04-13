@@ -28,13 +28,13 @@ class UserController extends Controller
                 ->count();
 
             $arr['product'] = Product::all();
-            return view('user.index')->with($arr)->with($ct);
+            return view('/user.index')->with($arr)->with($ct);
         }
         else
         {
             $ct['ct'] = 0;
             $arr['product'] = Product::all();
-            return view('user.index')->with($arr)->with($ct); 
+            return view('/user.index')->with($arr)->with($ct); 
         }
     }
 
@@ -71,11 +71,11 @@ class UserController extends Controller
                 $message->to($email)->subject('Register Succesfully');
                 
             });
-            return view('user.index')->with($arr)->with($ct);   
+            return view('/user.index')->with($arr)->with($ct);   
         }
         else
         {
-            return redirect('user-register');
+            return redirect('/user-register');
         }
     }
 
@@ -92,7 +92,7 @@ class UserController extends Controller
                 ->count();
             
             $arr['product'] = Product::all();
-            return view('user.index')->with($arr)->with($ct);
+            return view('/user.index')->with($arr)->with($ct);
         }
         else
         {
@@ -118,11 +118,11 @@ class UserController extends Controller
                     ->count();
 
                 $arr['product'] = Product::all();
-                return view('user.index')->with($arr)->with($ct);
+                return view('/user.index')->with($arr)->with($ct);
             }   
             else
             {
-                return redirect('user-login');
+                return redirect('/user-login');
             }
         }
     }
@@ -172,7 +172,7 @@ class UserController extends Controller
         if($usercount>0);
         {
             DB::update("update user set password=? where email=?",[$password,$email]);
-            return redirect('user-login');
+            return redirect('/user-login');
         }
     }
 
