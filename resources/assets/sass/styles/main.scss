@@ -1,0 +1,109 @@
+@import './globals/variables';
+
+.page {
+    .container {
+        padding: 0 40px;
+    }
+
+    &__block {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+
+        &_first {
+            margin-top: 0;
+        }
+    }
+
+    .content.default {
+        margin-left: 250px;
+    }
+
+    &_noheader {
+        .page__wrapper-content {
+            padding-top: 0;
+        }
+    }
+
+    .inner-nav {
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        &__header {}
+
+        &__title {
+            display: inline-block;
+            margin: 0;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        &__cta-wrapper {
+            float: right;
+
+            .btn {
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+        }
+    }
+
+    .tab__content {
+        .inner-nav {
+            margin-top: 0;
+        }
+    }
+
+    &__wrapper-content {
+        // padding-right: 20px;
+    }
+}
+/*
+Filters
+*/
+.filters {
+    display: flex;
+    // align-items: left;
+    justify-content: left;
+    align-content: center;
+
+    &__item {
+        margin-right: 20px;
+
+        &-label {
+            display: block;
+        }
+    }
+}
+/*
+Vendors
+*/
+.datatable {
+    width: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.45);
+    border-radius: 5px;
+    overflow: hidden;
+
+    &__header {
+        // padding: 10px 0;
+        input {
+            padding: 8px 15px;
+            line-height: 40px;
+            height: 40px;
+            margin: 5px 0 !important;
+        }
+
+        .dataTables_filter {
+            float: left !important;
+        }
+    }
+
+    &__footer {
+        margin-top: 10px;
+    }
+
+    .btn {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

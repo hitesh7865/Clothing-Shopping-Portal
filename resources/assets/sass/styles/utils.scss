@@ -1,0 +1,322 @@
+@import './globals/variables';
+
+.g-clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+
+.g-cleared {
+    clear: both;
+}
+
+.g-cleared:after {
+    clear: both;
+    display: block;
+    content: '';
+}
+
+.g-no-margin {
+    margin: 0;
+}
+
+.g-no-padding {
+    padding: 0;
+}
+
+.g-no-l-pad {
+    padding-left: 0;
+}
+
+.g-invisible {
+    visibility: hidden;
+}
+
+.g-hidden {
+    display: none !important;
+}
+
+.g-gutter {
+    padding: $gutter;
+    @include max-screen(1200px) {
+        padding: 35px 65px;
+    }
+    @include max-screen($sm) {
+        padding: 15px;
+    }
+}
+
+.g-no-gutter {
+    padding: 0;
+}
+
+.g-opacity {
+    opacity: 0!important;
+}
+
+.g-relative {
+    position: relative;
+}
+
+.g-container {
+    max-width: 1440px;
+}
+
+.g-capitalize {
+    text-transform: uppercase;
+}
+
+.g-center {
+    display: block;
+    margin: auto;
+}
+
+.g-text-center {
+    text-align: center !important;
+}
+
+.g-text-left {
+    text-align: left;
+}
+
+.g-text-right {
+    text-align: right;
+}
+
+.g-width {
+    width: 100%;
+    @include min-screen($ipadsm) {
+        height: 100%;
+    }
+}
+@include min-screen($ipadsm) {
+    .g-height {
+        height: 100%;
+    }
+}
+
+.g-margin_top {
+    margin-top: 40px;
+}
+
+.g-gutter-less-padding {
+    padding: $gutter-less-padding;
+    @include mq($max-width:$mdsm) {
+        padding: 30px 15px;
+    }
+    @include ipad(portrait) {
+        padding: 40px 10px;
+    }
+}
+
+.g-paddingbot {
+    &_30 {
+        padding-bottom: 30px;
+    }
+}
+@include min-screen(769px) {
+    .g-table {
+        display: table;
+        float: none;
+
+        &-cell {
+            display: table-cell;
+            @include mq($max-width:$sm) {
+                display: block;
+            }
+            vertical-align: middle;
+            float: none;
+        }
+    }
+}
+
+.g-align {
+    &_right {
+        text-align: right;
+        float: right;
+    }
+}
+
+.g-font {
+    &_18 {
+        font-size: 18px;
+        display: block;
+    }
+}
+
+.g-text-bold {
+    font-weight: bold;
+}
+
+.g-padding {
+    &_left {
+        padding-left: 15px;
+    }
+
+    &_right {
+        padding-right: 15px;
+    }
+
+    &_bottom {
+        @include max-screen($sm) {
+            padding-bottom: 20px;
+        }
+    }
+}
+
+.g-margin {
+    &_left {
+        margin-left: 10px;
+    }
+
+    &_top {
+        margin-top: 8px;
+    }
+}
+
+.md-hide {
+    display: none;
+    @include max-screen($sm) {
+        display: block;
+    }
+}
+
+.sm-hide {
+    display: block;
+    @include max-screen($sm) {
+        display: none;
+    }
+}
+
+.sm-show {
+    display: block;
+    @include min-screen($sm) {
+        display: none;
+    }
+}
+
+.g-footer-center {
+    text-align: center;
+    color: $white;
+    font-size: 16px;
+}
+
+.alert {
+    position: fixed;
+    top: 10;
+    right: 10;
+    width: 400px;
+    @include max-screen($sm) {
+        width: 100%;
+        top: 0;
+        right: 0;
+    }
+
+    .close {
+        margin: 0;
+        min-width: auto;
+    }
+}
+@include min-screen($ipad) {
+    .merchant-gutter {
+        width: 2.5%;
+    }
+}
+@include max-screen($ipad) {
+    .merchant-gutter {
+        width: 4%;
+    }
+}
+
+.hide-sm {
+    display: block !important;
+    @include max-screen($sm) {
+        display: none !important;
+    }
+}
+
+.show-sm {
+    @include max-screen($sm) {
+        display: block !important;
+    }
+    display: none !important;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select {
+    -moz-appearance: none;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.g-element-center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.g-border {
+    &-bottom {
+        border-bottom: 1px solid $border-grey;
+    }
+}
+
+.checkbox-custom,
+.radio-custom {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-custom,
+.checkbox-custom-label,
+.radio-custom,
+.radio-custom-label {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.checkbox-custom-label,
+.radio-custom-label {
+    position: relative;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.checkbox-custom + .checkbox-custom-label:before,
+.radio-custom + .radio-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+    background: rebeccapurple;
+    box-shadow: inset 0 0 0 4px #fff;
+}
+
+.radio-custom + .radio-custom-label:before {
+    border-radius: 50%;
+}
+
+.radio-custom:checked + .radio-custom-label:before {
+    background: $blue;
+    box-shadow: inset 0 0 0 4px #fff;
+    border: 1px solid #3e88de;
+}

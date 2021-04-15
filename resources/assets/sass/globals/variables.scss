@@ -1,0 +1,95 @@
+@import './bower_components/sass-mediaqueries/media-queries'; // color
+$grey-text: #7c7c7c;
+$header-text: #8e8e8e;
+$charcoal-grey: #4b4c4c;
+$header-bg: #fffdf9;
+$light-white: #e5e5e5;
+$pale-grey: #f7f8fa;
+$yellow: #fecd36;
+$color: #4a4a4a;
+$light-grey: #828282;
+$form-grey: #9b9b9b;
+$warm-grey: #8f8f8f;
+$blue: #28b1e8;
+$cream: #e8dfd0;
+$white: #ffffff;
+$black: #000000;
+$dark-grey: #9b9b9b;
+$border-grey: #cccccc;
+$input-focus: #51cbee;
+/*
+Fonts
+*/
+$font-default: Helvetica, sans-serif, Arial;
+$font-stack: 'Mavenpro-Regular' , $font-default;
+$mavenpro-regular: 'Mavenpro-Regular' , $font-default;
+$mavenpro-light: 'Mavenpro-Light', $font-default;
+$mavenpro-bold: 'Mavenpro-Bold', $font-default;
+/*
+Media Switches
+*/
+$md: 1024px;
+$sm: 767px;
+$xs: 320px;
+$mdlg: 1340px;
+$mdsm: 1200px;
+$mobile-screen-width: 420px;
+$ipad: 768px;
+$ipadsm: 769px;
+$smmd: 992px;
+$below-mdsm: 1199px;
+/*
+Padding and margins
+*/
+$gutter-left: 130px;
+$gutter-top: 65px;
+$gutter: 65px 130px 65px 130px;
+$gutter-less-padding: 30px 67px 87px 54px;
+$p-margin-top: 10px;
+$p-margin-bottom: 40px;
+$menu-bg-color: #FFF;
+$grey: #f7f7f7;
+/*
+Mixins
+*/
+@mixin all($min, $max) {
+    @include mq($media-type: 'all', $min-width: $min, $max-width: $max) {
+        @content;
+    }
+}
+// Animation
+@mixin transition($el,$speed) {
+    -webkit-transition: $el $speed linear;
+    -moz-transition: $el $speed linear;
+    -o-transition: $el $speed linear;
+    transition: $el $speed linear;
+}
+@mixin transit($el,$speed,$anim) {
+    -webkit-transition: $el $speed $anim;
+    -moz-transition: $el $speed $anim;
+    -o-transition: $el $speed $anim;
+    transition: $el $speed $anim;
+}
+@mixin translate($el,$val) {
+    -webkit-transform: translate(0,$val);
+    -ms-transform: translate(0,$val);
+    -o-transform: translate(0,$val);
+    transform: translate(0,$val);
+}
+@mixin blur($blurVal) {
+    filter: blur($blurVal); // Browser Specific
+    -webkit-filter: blur($blurVal);
+    -moz-filter: blur($blurVal);
+    -o-filter: blur($blurVal);
+    -ms-filter: blur($blurVal);
+}
+@mixin skew($x,$y) {
+    -ms-transform: skew($x,$y);
+    -webkit-transform: skew($x,$y);
+    transform: skew($x,$y);
+}
+@mixin rotate($deg) {
+    -ms-transform: rotate($deg);
+    -webkit-transform: rotate($deg);
+    transform: rotate($deg);
+}

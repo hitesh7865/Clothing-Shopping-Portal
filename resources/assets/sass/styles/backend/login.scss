@@ -1,0 +1,15 @@
+@import './globals/variables';
+
+.admin-login-container {
+    margin-top: 20vh;
+    &__form {
+        width: 500px;
+        margin: 0px auto;
+        @include max-screen($sm){
+            width: 100%;
+        }
+        &_submit {
+            text-align: center;
+        }
+    }
+}

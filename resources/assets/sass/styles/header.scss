@@ -1,0 +1,164 @@
+@import './globals/variables';
+
+header {
+    z-index: 101;
+    padding: 15px 35px;
+    position: fixed;
+    @include max-screen($ipad) {
+        padding: 13px 28px;
+        // position: absolute;
+        text-align: center;
+    }
+    width: 100%;
+    background: $header-bg;
+    @include transition(all,0.2s);
+    border-bottom: 1px solid $light-white;
+    // box-shadow: 0 2px 10px 0 rgba(40, 38, 35, 0.65), inset 0 -1px 0 0 $light-white;
+    .navbar {
+        margin-bottom: 0;
+
+        &-brand {
+            padding: 0;
+            height: 48px;
+            line-height: 1;
+            @include max-screen($xs) {
+                width: 80%;
+                height: 35px;
+                margin-top: 8px;
+
+                > img {
+                    width: 80%;
+                }
+            }
+        }
+
+        &-inverse {
+            background: transparent;
+            border-color: transparent;
+        }
+
+        &-right {
+            li {
+                margin-left: 11px;
+                margin-right: 11px;
+                @include max-screen($ipad) {
+                    margin-left: 4px;
+                    margin-right: 4px;
+                }
+
+                a {
+                    font-family: $mavenpro-light;
+                    font-size: 16px;
+                    @include transition(all,0.2s);
+                    @include max-screen($ipad) {
+                        font-size: 16px;
+                    }
+
+                    &.btn {
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        color: $header-bg;
+                        font-family: $mavenpro-bold;
+                        padding: 14px 34px;
+
+                        &:hover {
+                            color: $blue;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-toggle {
+            min-width: auto;
+            background: #333;
+            margin-right: 0;
+        }
+    }
+
+    .header {
+        &-gradient {
+            &-black {
+                height: 156px;
+                background-image: radial-gradient(circle at 50% 2%, #414141, #000000);
+                box-shadow: 0 2px 10px 0 rgba(40, 38, 35, 0.65), inset 0 -4px 0 0 #ddd1bb;
+            }
+        }
+
+        &-sticky {
+            @include max-screen($sm) {
+                display: inline-block;
+            }
+        }
+
+        &-logo {
+            // width: 100%;
+            // height: 100%;
+            display: table;
+            text-align: center;
+
+            &-image {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .active > a:focus,
+    .navbar-inverse .navbar-nav > .active > a:hover {
+        color: $header-text;
+        background: transparent;
+    }
+
+    .navbar-inverse .navbar-nav > li > a:focus,
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: $charcoal-grey;
+    }
+}
+
+.header {
+    &-bg {
+        // background: rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 0;
+        background: $white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        padding: 15px 48px;
+        z-index: 1000;
+        @include transition(all,0.2s);
+        box-shadow: 0 2px 10px 0 rgba(40, 38, 35, 0.65), inset 0 -1px 0 0 $light-white;
+    }
+}
+
+.header-bg {
+    .header-logo-image {
+        img {
+            @include min-screen($ipad) {
+                width: 62px;
+                @include transition(all,0.2s);
+            }
+        }
+    }
+}
+
+.navbar-inverse .navbar-nav > li > a.btn_blue:focus,
+.navbar-inverse .navbar-nav > li > a.btn_blue:hover {
+    background-color: #215291;
+    color: $white;
+}
+
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover {
+    @include transition(all,0.2s);
+}
+
+.active a {
+    color: $blue !important;
+    font-family: $mavenpro-bold;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+    border-color: transparent;
+}

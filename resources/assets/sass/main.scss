@@ -1,0 +1,19 @@
+// inject:global
+// endinject
+
+// bower:scss
+// endbower
+
+@import './styles/icons';
+
+.g-icon{
+
+    overflow: hidden;
+    display: inline-block;
+    
+}
+
+@include retina-sprites($retina-groups);
+
+// inject:app
+// endinject

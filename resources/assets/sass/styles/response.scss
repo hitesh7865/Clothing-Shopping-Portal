@@ -1,0 +1,17 @@
+@import './globals/variables';
+
+.page {
+    &_response {
+        h6 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .select2-container,
+        input,
+        select,
+        textarea {
+            margin-bottom: 10px !important;
+        }
+    }
+}

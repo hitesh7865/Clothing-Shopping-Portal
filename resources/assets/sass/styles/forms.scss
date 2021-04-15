@@ -1,0 +1,318 @@
+@import './globals/variables';
+
+
+.job-read-only-form{
+    select,input,textarea,ul,.select2-search__field{
+        pointer-events: none;
+        opacity: 0.4;
+    }
+    input[type="submit"]{
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .job-status{
+        margin-top: 30px;
+    }
+
+}
+.form,
+form {
+
+    // text-align: left;
+    &__input-wrapper,
+    &__select-wrapper {
+        position: relative;
+    }
+
+}
+
+input,
+select,
+textarea,
+ul.tag-editor {
+    font-family: $mavenpro-regular;
+    font-size: 20px;
+    line-height: 2.6;
+    letter-spacing: 0.5px;
+    // color: $dark-grey;
+    color: $black;
+    text-align: left;
+    // border-radius: 5px;
+    background-color: $white;
+    border: 0;
+    // border-bottom: solid 1px #a58b43;
+    outline: none !important;
+    // width: 100%;
+    margin-bottom: 25px;
+    // border-radius: 18px;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='text'],
+input[type='text'],
+textarea,
+ul.tag-editor,
+select {
+    width: 100%;
+    border: 1px solid #bfbebe;
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    @include transition(all, 250ms);
+    transition-property: box-shadow, border;
+
+    &:focus {
+        box-shadow: 0 0 5px $input-focus;
+        border-color: white;
+    }
+
+    &.has-error:focus {
+        box-shadow: 0 0 3px #f02d44;
+    }
+
+    &:disabled {
+        background-color: #f3f3f3;
+        color: #b3abab;
+    }
+}
+
+select {
+    min-width: 70px;
+    width: auto;
+}
+
+/* Custom checkbox END */
+input[type=email],
+input[type=text],
+select,
+textarea {
+    &:focus {
+        // border: solid 1px #4098ff;
+        // height: 50px;
+    }
+}
+
+label {
+    font-family: $mavenpro-regular;
+    font-size: 15px;
+    text-align: left;
+    color: $color;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: none;
+    height: 180px;
+    line-height: 1.5;
+
+    &:focus {
+        height: 180px;
+    }
+}
+
+.custom-select {
+    height: 50px;
+}
+
+button {
+    &.dashed {
+        outline: 0 none;
+        font-size: 18px;
+        font-family: $mavenpro-light;
+        text-align: left;
+        color: #635327;
+        line-height: 2.6;
+        padding: 0 40px;
+        border-radius: 60px;
+        background-color: #f7f7f7;
+        border: dashed 2px #635327;
+        margin-bottom: 30px;
+    }
+
+    &.has-error {
+        border: dashed 2px #f02d44;
+        background-color: #ffe7e7;
+
+        &:focus,
+        &:hover {
+            border: dashed 2px #f02d44 !important;
+        }
+    }
+}
+
+.row .col-md-6 {
+    position: relative;
+}
+
+label.error {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+}
+
+.form__group.row,
+.form__input-wrapper.row,
+.form__select-wrapper.row {
+    label.error {
+        // Because of row margin left
+        left: 19px;
+    }
+}
+
+.form__select-wrapper {
+    label.error {
+        bottom: 5px;
+    }
+}
+
+/* Absolute Center Spinner */
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+    /* hide "loading..." text */
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.loading:not(:required):after {
+    content: '';
+    display: block;
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    margin-top: -0.5em;
+    -webkit-animation: spinner 1500ms infinite linear;
+    -moz-animation: spinner 1500ms infinite linear;
+    -ms-animation: spinner 1500ms infinite linear;
+    -o-animation: spinner 1500ms infinite linear;
+    animation: spinner 1500ms infinite linear;
+    border-radius: 0.5em;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+@-webkit-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+#checkbox-error+label.error {
+    bottom: -22px;
+}
+
+.custom-label {
+    margin-bottom: 20px;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
+input:-ms-input-placeholder {
+    line-height: normal;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    line-height: normal;
+}

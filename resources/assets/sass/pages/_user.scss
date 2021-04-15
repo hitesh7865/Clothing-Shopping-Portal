@@ -1,0 +1,22 @@
+.disabled{
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.action-button{
+    display: flex;
+    justify-content: space-around;
+}
+.user{
+
+&__create-form{
+    select{
+        height: auto;
+        width: 100%;
+        background-size: 8px 45px;
+    }
+    
+    
+}
+
+}

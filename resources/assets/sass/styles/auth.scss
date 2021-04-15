@@ -1,0 +1,26 @@
+@import './globals/variables'; // Login
+
+.signupform {
+    // padding: 90px 40px;
+    color: $form-grey;
+    // max-width: 600px;
+    // margin: auto;
+    @include max-screen($ipad) {
+        padding: 50px 30px;
+    }
+    @include max-screen($sm) {
+        padding: 15px;
+    }
+
+    label {
+        color: $form-grey;
+    }
+
+    .radio-label {
+        float: left;
+        margin-right: 20px;
+    }
+    // .checkbox-custom:focus + .checkbox-custom-label, .radio-custom:focus + .radio-custom-label {
+    //   outline: 1px solid #ddd; /* focus style */
+    // }
+}

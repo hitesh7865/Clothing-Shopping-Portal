@@ -1,0 +1,98 @@
+@import './globals/variables';
+
+.popup {
+    min-width: 500px;
+    width: 50%;
+    max-width: 800px;
+    margin: auto;
+    background: #FFFFFF;
+    border-radius: 0;
+    // min-height: 100px;
+    margin: auto;
+
+    &__footer {
+        // margin-left: -20px;
+        // margin-right: -20px;
+        background-color: #FFFFFF;
+
+        .action {
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+
+            &_save {
+                color: #000000;
+                background: #c1efa7;
+
+                &:hover {
+                    background-color: #def1d4;
+                }
+            }
+
+            &:hover {
+                // background: orange;
+            }
+        }
+    }
+
+    &__header {
+        padding: 20px;
+        font-size: 18px;
+        background: #d4d0d0;
+    }
+
+    &__content {
+        padding: 30px 20px 0;
+    }
+}
+/**
+       * Fade-move animation for second dialog
+       */
+/* at start */
+.my-mfp-slide-bottom .popup {
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    -webkit-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+    -moz-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+    -ms-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+    -o-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+    transform: translateY(-20px) perspective(600px) rotateX(10deg);
+}
+/* animate in */
+.my-mfp-slide-bottom.mfp-ready .popup {
+    opacity: 1;
+    -webkit-transform: translateY(0) perspective(600px) rotateX(0);
+    -moz-transform: translateY(0) perspective(600px) rotateX(0);
+    -ms-transform: translateY(0) perspective(600px) rotateX(0);
+    -o-transform: translateY(0) perspective(600px) rotateX(0);
+    transform: translateY(0) perspective(600px) rotateX(0);
+}
+/* animate out */
+.my-mfp-slide-bottom.mfp-removing .popup {
+    opacity: 0;
+    -webkit-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+    -moz-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+    -ms-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+    -o-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+    transform: translateY(-10px) perspective(600px) rotateX(10deg);
+}
+/* Dark overlay, start state */
+.my-mfp-slide-bottom.mfp-bg {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-out;
+    -moz-transition: opacity 0.3s ease-out;
+    -o-transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out;
+}
+/* animate in */
+.my-mfp-slide-bottom.mfp-ready.mfp-bg {
+    opacity: 0.8;
+}
+/* animate out */
+.my-mfp-slide-bottom.mfp-removing.mfp-bg {
+    opacity: 0;
+}

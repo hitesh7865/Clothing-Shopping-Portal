@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,208 +13,140 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'AppController@index');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+//Settings
+Route::get('/settings', 'SettingController@index');
+Route::get('/settings/organization', 'SettingController@showTab');
+
+Route::get('/settings/profile', 'SettingController@showTab')->name('profile');
+Route::get('/settings/candidate', 'SettingController@showTab');
+Route::post('/organization/save', 'SettingController@saveOrganization');
+// Route::post('/smtp/save', 'SettingController@saveImapSmptp');
+// Route::post('/imap/save', 'SettingController@saveImapSmptp');
+Route::post('/settings', 'SettingController@store')->name('settings.store'); // New setting
+Route::put('/settings/{organizationsetting}', 'SettingController@update')->name("settings.update"); // Update a setting
+
+// Profile
+// Route::get('/settings/profile', 'UserController@index')->name('profile');
+Route::put('/settings/profile/{user}', 'UserController@update')->name('profile.update');
+
+Route::get('/api/disable-expired-jobs', 'SettingController@disableExpiredJobs');
+
+//Cateogores/Jobs
+Route::get('/jobs', 'CategoryController@index')->name('jobs');
+Route::post('/jobs', 'CategoryController@store')->name('jobs.store');
+Route::put('/jobs/{category}', 'CategoryController@update')->name('jobs.update');
+Route::get('/api/jobs', 'CategoryController@getJobs');
+Route::get('/jobs/create', 'CategoryController@create')->name('jobs.create');
+Route::get('/jobs/{category}/edit', 'CategoryController@edit')->name('jobs.edit');
+Route::delete('/jobs/delete/{id}', 'CategoryController@destroy')->name('jobs.destroy');
+Route::post('/jobs/change-status/{id}', 'CategoryController@changeJobStatus')->name('jobs.change-status');
+
+
+//Mailboxes
+Route::get('/mailboxes', 'MailboxController@index')->name('mailboxes');
+Route::post('/mailboxes', 'MailboxController@store')->name('mailboxes.store');
+Route::get('/mailboxes/create', 'MailboxController@create')->name("mailboxes.create");
+Route::get('/mailboxes/{mailbox}/edit', 'MailboxController@edit')->name('mailboxes.edit');
+Route::put('/mailboxes/{mailbox}', 'MailboxController@update')->name("mailboxes.update");
+Route::delete('/mailboxes/destroy/{mailbox}','MailboxController@destroy')->name('mailboxes.destroy');
+Route::get('/api/mailboxes', 'MailboxController@getMailboxes')->name('mailboxes.getAll');
+Route::put('/api/imap/test', 'MailboxController@testImap')->name('mailboxes.testImap');
+Route::post('/api/imap/test', 'MailboxController@testImap')->name('mailboxes.testImap');
+
+// Questions
+Route::get('/questions', 'QuestionController@index')->name('questions');
+Route::post('/questions', 'QuestionController@store')->name('questions.store');
+Route::get('/questions/create', 'QuestionController@create')->name("questions.create");
+Route::get('/questions/{question}/edit', 'QuestionController@edit')->name('questions.edit');
+Route::put('/questions/{question}', 'QuestionController@update')->name('questions.update');
+Route::delete('/questions/destroy/{question}','QuestionController@destroy')->name('questions.destroy');
+Route::get('/api/questions', 'QuestionController@getQuestions');
+
+
+// Applications
+Route::get('/candidates', 'ApplicationController@index')->name('candidates');
+Route::put('/candidates/{id}', 'ApplicationController@update')->name('candidates.update');
+Route::get('/api/applications', 'ApplicationController@getApplications');
+Route::get('/api/applications/{application}/{file_unique_name}', 'ApplicationController@getAttachment')->name('candidates.attachment');
+Route::get('/api/send-reminder', 'ApplicationController@sendReminder')->name('candidates.sendreminder');
+Route::get('/api/fetch-fresh', 'ApplicationController@fetchFresh');
+Route::get('/api/fetch-questioned', 'ApplicationController@fetchQuestioned');
+Route::get('/api/raise-questions', 'ApplicationController@raiseQuestions');
+// Route::get('/api/send-reminders', 'ApplicationController@sendReminders');
+
+Route::get('/api/read-replies', 'ApplicationController@readReplies');
+Route::post('/api/send-reminder', 'ApplicationController@sendReminder');
+Route::get('/api/generate-rating', 'ApplicationController@generateRating')->name('rating');
+
+Route::get('/fetch-all', 'ApplicationController@fetchAll');
+Route::get('/test', 'ApplicationController@test')->name('test');
+Route::post('/check-cookie', 'ApplicationController@checkCookie');
+Route::post('/authenticate-carbonate', 'ApplicationController@carbonateAuthentication');
+Route::post('/carbonate-applicant-sync', 'ApplicationController@carbonateApplicantSync');
+Route::post('/delete-cookie', 'ApplicationController@deleteCookie');
+
+//Questionaire
+Route::get('/response', 'ResponseController@index')->name('response');
+Route::post('/response', 'ResponseController@store')->name('response.store');
+Route::get('/response/thanks', 'ResponseController@thanks')->name('response.thanks');
+Route::get('/response/expired', 'ResponseController@expired')->name('response.expired');
+
+//Question set
+Route::resource('question-sets', 'QuestionSetController');
+Route::resource('tags', 'TagController');
+Route::resource('functional-areas', 'FunctionalAreaController');
+Route::resource('job-categories', 'JobCategoryController');
+Route::get('/get-tags', 'TagController@getTags');
+Route::get('/get-functional-area', 'FunctionalAreaController@getfunctionalarea');
+Route::get('/get-job-categories', 'JobCategoryController@getJobCategories');
+Route::get('/get-question-sets', 'QuestionSetController@getQuestionSets');
+
+
+// Application Activity
+Route::get('/api/application-activity/{id}', 'ApplicationController@getAppActivityByAppId');
+
+// Route::get('/api/applications', 'ApplicationController@getApplications');
+
+// Moderator 
+
+Route::get('/pending-moderator', 'Moderator\PendingModeratorController@index')->name('pending-moderator.index');
+Route::get('/pending-moderator/{category}/edit', 'Moderator\PendingModeratorController@edit');
+Route::get('/pending-moderator/jobs', 'Moderator\PendingModeratorController@getJobs');
+Route::put('/pending-moderator/jobs/{id}', 'Moderator\PendingModeratorController@update')->name('pending-moderator.update');
+
+// Admin User Crud
+
+Route::resource('organization/users', 'Organization\UserController');
+
+Route::get('/get-users','Organization\UserController@getUsers');
+
+Route::get('/threads', 'Controller@home');
+Route::get('/contact', function () {
+    return view('about');
+})->name('contact');
+
+Route::get('/faq', function () {
+    return redirect(env('FAQ_URL'));
+})->name('contact');
+
+Route::get('/about-us', function () {
+    return view('about');
 });
-
-//Admin Routes....
-
-Route::get('Login',function(){
-    return view('admin.adminlogin');
+Route::post('/save', 'SubscriberController@store');
+Route::get('/privacy-policy', function () {
+    return view('privacy');
 });
-
-Route::get('AdminPanel',function(){
-    return view('admin.adminindex');
-});
-
-Route::get('/orderdetails',function(){
-    return view('admin.orderpage.vieworder');
-});
-
-Route::get('Add-Category',function(){
-    return view('admin.category.addcategory');
-});
-
-Route::get('view-category',function(){
-    return view('admin.category.viewcategory');
-});
-
-Route::get('update-category',function(){
-    return view('admin.category.updatecategory');
-});
-
-Route::get('addsubcategory',function(){
-    return view('admin.subcategory.addsubcategory');
-});
-
-Route::get('view-subcategory',function(){
-    return view('admin.subcategory.viewsubcategory');
-});
-
-Route::get('update-subcategory',function(){
-    return view('admin.subcategory.updatesubcategory');
-});
-
-Route::get('addproduct',function(){
-    return view('admin.product.addproduct');
-});
-
-Route::get('view-product',function(){
-    return view('admin.product.viewproduct');
-});
-
-Route::get('update-product',function(){
-    return view('admin.product.updateproduct');
-});
-
-Route::get('addcolor',function(){
-    return view('admin.color.addcolor');
-});
-
-Route::get('view-color',function(){
-    return view('admin.color.viewcolor');
-});
-
-Route::get('update-color',function(){
-    return view('admin.color.updatecolor');
-});
-
-Route::get('addbrand',function(){
-    return view('admin.brand.addbrand');
-});
-
-Route::get('view-brand',function(){
-    return view('admin.brand.viewbrand');
-});
-
-Route::get('update-brand',function(){
-    return view('admin.brand.updatebrand');
-});
-
-//Admin
+Route::post('settings/genrate_api_token', 'SettingController@genrate_api_token');
 
 
+Auth::routes();
+Route::get('/login', 'LoginController@index')->name('login');
+Route::post('/login', 'LoginController@authenticate');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
-//User Route....
-Route::get('/index',function(){
-    return view('user.index');
-});
-
-Route::get('/user-register',function(){
-    return view('user.userregister');
-});
-
-Route::get('/forgetpassword',function(){
-    return view('user.forgetpassword');
-});
-
-Route::get('/resetpage',function(){
-    return view('user.Resetpassword');
-});
-
-Route::get('/user-login',function(){
-    return view('user.userlogin');
-});
-
-Route::get('/user-cart',function(){
-    return view('user.cart');
-});
-
-Route::get('/user-category',function(){
-    return view('user.category');
-});
-
-Route::get('/user-checkout',function(){
-    return view('user.checkout');
-});
-
-Route::get('/user-contact',function(){
-    return view('user.contact');
-});
-
-Route::get('/user-product',function(){
-    return view('user.product');
-});
-
-Route::get('/user-registermail',function(){
-    return view('user.registermail');
-});
-
-Route::get('/user-dispatch',function(){
-    return view('user.dispatch');
-});
-
-//User
-
-//UserControllers
-Auth::Routes();
-Route::get('/user', 'UserController@index')->name('/');
-Route::post('/Rdata','UserController@Rdata');
-Route::post('/logins','UserController@logins');
-Route::get('/logins','UserController@list');
-Route::post('/updatepass','UserController@resetpassword');
-Route::match(['get','post'],'forget','UserController@forget');
-Route::get('/userlogout','UserController@userlogout');
-
-//AdminController
-Route::get('/admin', 'AdminController@index')->name('admin');
-Route::post('/logs','AdminController@logs');
-Route::post('/add_category','AdminController@add_category');
-Route::post('/add_subcategory','AdminController@add_subcategory');
-Route::post('/add-product','AdminController@addproduct');
-Route::post('/add_color','AdminController@add_color');
-Route::post('/add_brand','AdminController@add_brand');
-Route::get('/orderdetails/{id}','AdminController@vieworder');
-Route::post('/updateorder/{id}','AdminController@updateorder');
-Route::get('/logout','AdminController@logout');
-
-//mainpagecontroller
-Route::get('/AdminPanel', 'mainpagecontroller@index');
-
-//CategoryController
-Route::get('/view-category','Categorycontroller@index');
-Route::get('/click_edit/{id}','Categorycontroller@ucategory');
-Route::post('/update/{id}','Categorycontroller@upcategory');
-Route::get('/click_delete/{id}','Categorycontroller@dcategory');
-
-//SubCategoryController
-Route::get('/addsubcategory','Subcategorycontroller@index');
-Route::get('/view-subcategory','Subcategorycontroller@view');
-Route::get('click_edit_sub/{id}','Subcategorycontroller@ucategory');
-Route::post('/updatesub/{id}','Subcategorycontroller@upcategory');
-Route::get('/click_delete_sub/{id}','Subcategorycontroller@dcategory');
-
-//Productcontroller
-Route::get('/addproduct','Productcontroller@index');
-Route::get('/view-product','Productcontroller@view');
-Route::get('/click_edit_pro/{id}','productcontroller@uproduct');
-Route::post('/updateproduct/{id}','productcontroller@upproduct');
-Route::get('/click_delete_pro/{id}','productcontroller@dproduct');
-
-//cartcontroller
-Route::get('/viewproduct/{id}','cartcontroller@index');
-Route::post('/addcart/{id}','cartcontroller@addcart');
-Route::get('/Shoppingcart','cartcontroller@shoppingcart');
-Route::get('/deletecart/{id}','cartcontroller@deletecart');
-Route::get('/checkoutdata','cartcontroller@checkoutdata');
-
-//BookingController
-Route::post('/Orders','Bookingcontroller@index');
-//Route::get('/Orders','Bookingcontroller@store');
-
-//brandcolorcontroller
-Route::get('/view-color','brandcolorcontroller@index');
-Route::get('/click_edit_color/{id}','brandcolorcontroller@click_edit_color');
-Route::post('/updatecolor/{id}','brandcolorcontroller@upcolor');
-Route::get('/click_delete_color/{id}','brandcolorcontroller@click_delete_color');
-
-Route::get('/view-brand','brandcolorcontroller@view');
-Route::get('/click_edit_brand/{id}','brandcolorcontroller@click_edit_brand');
-Route::post('/updatebrand/{id}','brandcolorcontroller@upbrand');
-Route::get('/click_delete_brand/{id}','brandcolorcontroller@click_delete_brand');
-//Functions
-
-
-
-
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/public_job_view/{id}', 'PublicController@showPosterJobDetail');

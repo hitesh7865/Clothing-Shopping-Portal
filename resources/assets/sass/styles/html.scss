@@ -1,0 +1,284 @@
+@import './globals/variables';
+
+blockquote,
+body,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+html,
+p,
+table,
+td,
+th {
+    margin: 0;
+    padding: 0;
+}
+
+article,
+footer,
+header,
+nav,
+section {
+    display: block;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+body {
+    color: #000;
+    font: normal 125%/1.4 $font-stack;
+    text-align: left;
+    // background-image: linear-gradient(to top, #242424, #747474);
+    font-size: 16px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $header-text;
+    font-family: $font-stack;
+
+
+}
+
+@include max-screen(768px) {
+    text-align: center;
+}
+
+h1 {
+    position: relative;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 65px;
+
+    @include max-screen(768px) {
+        margin-bottom: 35px;
+    }
+
+    @include max-screen($mobile-screen-width) {
+        font-size: 25px;
+    }
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1.21;
+    margin-bottom: 20px;
+
+    @include max-screen($mobile-screen-width) {
+        font-size: 24px;
+    }
+}
+
+h3 {
+    font-size: 30px;
+    line-height: 1;
+    margin-bottom: 15px;
+
+    @include max-screen($mobile-screen-width) {
+        font-size: 20px;
+    }
+}
+
+h4 {
+    margin-top: 38px;
+    font-size: 24px;
+    margin-bottom: 30px;
+
+    @include max-screen($mobile-screen-width) {
+        font-size: 24px;
+    }
+}
+
+h5 {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+h6 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+label {
+    font-weight: normal;
+
+    &.error {
+        font-family: $mavenpro-regular;
+        font-size: 12px;
+        color: #ef2d45;
+        margin-top: -35px;
+    }
+}
+
+a {
+    text-decoration: none !important;
+    outline: 0 none;
+
+    // color: #000;
+    &:active,
+    &:focus,
+    &:hover,
+    &:visited {
+        text-decoration: none;
+        // color: #000;
+    }
+
+    &.white {
+        color: #fff;
+    }
+
+    &.red {
+        color: #d0011b;
+    }
+}
+
+.g-table-simple {
+    table {
+        width: 100%;
+        background-color: #ddd1bb;
+        border-collapse: collapse;
+
+        @include max-screen(768px) {
+            overflow-y: auto;
+            display: block;
+        }
+
+        td,
+        th {
+            font-family: $mavenpro-bold;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            text-align: left;
+            border: 3px solid #fff;
+        }
+
+        th {
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            background-color: #857035;
+            padding: 36px 0;
+
+            @include max-screen(768px) {
+                padding: 10px 0;
+            }
+        }
+
+        td {
+            font-size: 12px;
+            padding: 15px 30px;
+
+            @include max-screen(768px) {
+                padding: 10px;
+            }
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ddd1bb;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        tr:first-child th {
+            border-top: 0;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+
+        tr {
+
+            td:first-child,
+            th:first-child {
+                border-left: 0;
+            }
+        }
+
+        tr {
+
+            td:last-child,
+            th:last-child {
+                border-right: 0;
+            }
+        }
+    }
+}
+
+p {
+    margin-top: $p-margin-top;
+    margin-bottom: $p-margin-bottom;
+    text-align: left;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+    color: $color;
+    font-size: 18px;
+
+    &.small {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+}
+
+.extra-small {
+    font-size: 10px;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.large {
+    font-size: 18px;
+}
+
+input::-webkit-input-placeholder {
+    color: #9b9b9b;
+}
+
+#toast-container {
+    .toast-close-button {
+        margin-bottom: -5px;
+        margin-top: -5px;
+        margin-right: 5px;
+    }
+}
+
+#toast-container>div {
+    // width: 60% !important;
+    padding: 10px;
+    font-size: 14px;
+    // background-image: none !important;
+    // margin: auto;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
