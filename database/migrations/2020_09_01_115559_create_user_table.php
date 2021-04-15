@@ -23,6 +23,7 @@ class CreateUserTable extends Migration
             $table->string('Address');
             $table->string('Zip_code');
             $table->string('mobile');
+            $table->integer('status');
             $table->timestamps();
         });
     }

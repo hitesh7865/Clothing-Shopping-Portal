@@ -98,7 +98,7 @@
 		<div class="container">
 			<h4>Contact</h4>
 			<div class="site-pagination">
-				<a href="user">Home</a> /
+				<a href="/user">Home</a> /
 				<a href="/user-contact">Contact</a>
 			</div>
 		</div>
@@ -112,9 +112,9 @@
 			<div class="row">
 				<div class="col-lg-6 contact-info">
 					<h3>Get in touch</h3>
-					<p>Main Str, no 23, New York</p>
-					<p>+546 990221 123</p>
-					<p>hosting@contact.com</p>
+					<p>Near Vadilal Hospital, Mirzapur, Ahemadabad</p>
+					<p>+91 9874563210</p>
+					<p>dcs@contact.com</p>
 					<div class="contact-social">
 						<a href="#"><i class="fa fa-pinterest"></i></a>
 						<a href="#"><i class="fa fa-facebook"></i></a>
@@ -122,12 +122,13 @@
 						<a href="#"><i class="fa fa-dribbble"></i></a>
 						<a href="#"><i class="fa fa-behance"></i></a>
 					</div>
-					<form class="contact-form">
-						<input type="text" placeholder="Your name">
-						<input type="text" placeholder="Your e-mail">
-						<input type="text" placeholder="Subject">
-						<textarea placeholder="Message"></textarea>
-						<button class="site-btn">SEND NOW</button>
+					<form class="contact-form" method="post" action="/addcontact">
+					@csrf
+						<input type="text" placeholder="Your name" name="name">
+						<input type="text" placeholder="Your e-mail" name="email">
+						<input type="text" placeholder="Subject" name="subject">
+						<textarea placeholder="Message" name="message"></textarea>
+						<button class="site-btn" type="submit">SEND NOW</button>
 					</form>
 				</div>
 			</div>

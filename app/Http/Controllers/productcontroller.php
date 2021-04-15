@@ -23,10 +23,28 @@ class productcontroller extends Controller
         return view('/admin.product.addproduct')->with($arr)->with($arr1)->with($arr2)->with($arr3);
     }
 
-    public function view()
+    public function view(Category $Category,Subcategory $Subcategory)
     {
-        $arr['product'] = Product::all(); 
-        return view('/admin.product.viewproduct')->with($arr);
+        $product = array();
+        $arr1 = Product::all()->toArray();
+
+        foreach($arr1 as $key => $data){
+            $product[$key]['category_id'] = Category::where('id',$data['category_id'])->select('Cname')->value('Cname');
+            $product[$key]['subcategory_id'] = Subcategory::where('id',$data['subcategory_id'])->select('SubCategory_name')->value('SubCategory_name');
+            $product[$key]['Product_name'] = $data['Product_name'];
+            $product[$key]['Product_brand'] =$data['Product_brand'];
+            $product[$key]['Price'] =$data['Price'];
+            $product[$key]['Description'] =$data['Description'];
+            $product[$key]['Color'] =$data['Color'];
+            $product[$key]['Size'] =$data['Size'];
+            $product[$key]['Stock'] =$data['Stock'];
+            $product[$key]['Posting_date'] =$data['Posting_date'];
+            $product[$key]['photo'] =$data['photo'];
+            $product[$key]['id'] =$data['id'];
+        }
+        // echo "<pre>";
+        // print_r($product);die;
+        return view('/admin.product.viewproduct',['product'=>$product]);
     }
 
     public function uproduct($id)

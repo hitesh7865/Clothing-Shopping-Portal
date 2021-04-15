@@ -29,11 +29,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Manage Color
                             </a>                 
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/view_user">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Manage User
                             </a> 
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/contactus">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Contact Us Details
                             </a>            

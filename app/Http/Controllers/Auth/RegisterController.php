@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Mail;
 use App\User;
-use App\Organization;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -29,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/settings';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -50,9 +49,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'fullname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:3',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -64,52 +63,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'fullname' => $data['fullname'],
+        return User::create([
+            'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'user_name' => $data['email']
+            'password' => Hash::make($data['password']),
         ]);
-        
-        if ($user) {
-
-            $organization= Organization::create([
-            'user_id' => $user->id,
-            'name' => $data['organization_name'],
-
-          ]);
-            
-          $update_organization_id = User::where("id",$user->id)->update( 
-            array( 
-                  "organization_id" => $organization->id
-               )
-            );
-                 
-        //   $user = User::create([
-        //     'organization_id' => $organization->id
-        //   ])->where('id',$user->id);
-
-            $user->organizations()->attach($organization->id);
-            $this->sendWelcomeEmail($user->toArray());
-            // $request->session()->flash('success', 'Yay! You have successfully signed up, a welcome email has been sent to you.');
-
-
-        }
-        
-        return $user;
     }
-
-    private function sendWelcomeEmail($user)
-    {
-        Mail::send('emails.user_welcome', $user, function ($message) use ($user) {
-            $message->subject('Welcome ' . $user['fullname'] . "!");
-            $message->to($user['email']);
-            $message->replyTo("no-reply@yourhired.com");
-          
-            $swiftMessage = $message->getSwiftMessage();
-            $headers = $swiftMessage->getHeaders();
-        });
-    }
-
-
 }

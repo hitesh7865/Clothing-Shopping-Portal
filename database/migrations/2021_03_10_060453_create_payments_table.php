@@ -15,13 +15,15 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
+            $table->unsignedbigInteger('user_id');
             $table->string('status_id');
             $table->string('payment_id');
             $table->string('api_id');
             $table->string('netbank_id');
             $table->float('amount',10,2);
             $table->string('response');
+
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

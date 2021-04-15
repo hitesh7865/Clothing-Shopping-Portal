@@ -19,8 +19,8 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="text-center">
-                                            <th>Category Id</th>
-                                            <th>Sub-Category Id</th>
+                                            <th>Category</th>
+                                            <th>Sub-Category</th>
                                             <th>Product_name</th>
                                             <th>Product_brand</th>
                                             <th>Price</th>
@@ -37,8 +37,8 @@
 
                                     <tfoot>
                                         <tr class="text-center">
-                                            <th>Category Id</th>
-                                            <th>Sub-Category Id</th>
+                                            <th>Category</th>
+                                            <th>Sub-Category</th>
                                             <th>Product_name</th>
                                             <th>Product_brand</th>
                                             <th>Price</th>
@@ -59,19 +59,19 @@
                                     {
                                     ?>
                                     <tr class="text-bottom" >
-                                        <td>{{ $c->category_id }}</td>
-                                        <td>{{ $c->subcategory_id }}</td>
-                                        <td>{{ $c->Product_name }}</td>
-                                        <td>{{ $c->Product_brand }}</td>
-                                        <td>{{ $c->Price }}</td>
-                                        <td>{{ $c->Description }}</td>
-                                        <td>{{ $c->Color }}</td>
-                                        <td>{{ $c->Size }}</td>
-                                        <td>{{ $c->Stock }}</td>
-                                        <td>{{ $c->Posting_date }}</td>
-                                        <td><img src="{{ asset('uploads/productimage/'.$c->photo) }}" height="200" width="150" alt="image"></td>
-                                        <td><a href="{{ url('click_edit_pro/'. $c->id) }}" class="btn btn-lg btn-success">Edit</a></td>
-                                        <td><a href="click_delete_pro/{{ $c->id }}" class="btn btn-lg btn-danger">Delete</a></td>
+                                        <td>{{ $c['category_id'] }}</td>
+                                        <td>{{ $c['subcategory_id'] }}</td>
+                                        <td>{{ $c['Product_name'] }}</td>
+                                        <td>{{ $c['Product_brand'] }}</td>
+                                        <td>{{ $c['Price'] }}</td>
+                                        <td>{{ $c['Description'] }}</td>
+                                        <td>{{ $c['Color'] }}</td>
+                                        <td>{{ $c['Size'] }}</td>
+                                        <td>{{ $c['Stock'] }}</td>
+                                        <td>{{ $c['Posting_date'] }}</td>
+                                        <td><img src="{{ asset('uploads/productimage/'.$c['photo']) }}" height="200" width="150" alt="image"></td>
+                                        <td><a href="click_edit_pro/ {{ $c['id'] }}" class="btn btn-lg btn-success">Edit</a></td>
+                                        <td><a href="click_delete_pro/{{ $c['id'] }}" class="btn btn-lg btn-danger">Delete</a></td>
                                     </tr>
                                     <?php
                                     }

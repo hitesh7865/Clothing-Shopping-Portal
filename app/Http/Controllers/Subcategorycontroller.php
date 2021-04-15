@@ -14,10 +14,18 @@ class Subcategorycontroller extends Controller
         return view('/admin.subcategory.addsubcategory')->with($arr);
     }
 
-    public function view()
+    public function view(Category $Category)
     { 
-        $arr['subcategory'] = Subcategory::all(); 
-        return view('/admin.subcategory.viewsubcategory')->with($arr);
+        $subcategory = array();
+        $arr1 = Subcategory::all()->toArray();
+
+        foreach($arr1 as $key => $data){
+            $subcategory[$key]['Category_id'] = Category::where('id',$data['Category_id'])->select('Cname')->value('Cname');
+            $subcategory[$key]['SubCategory_name'] = $data['SubCategory_name'];
+            $subcategory[$key]['Discription'] =$data['Discription'];
+            $subcategory[$key]['id'] =$data['id'];
+        }
+        return view('/admin.subcategory.viewsubcategory',['subcategory'=>$subcategory]);
     }
 
     public function ucategory($id)

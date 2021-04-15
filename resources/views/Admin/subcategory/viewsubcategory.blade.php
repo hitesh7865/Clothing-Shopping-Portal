@@ -42,11 +42,11 @@
                                     {
                                     ?>
                                     <tr>
-                                        <td>{{ $c->SubCategory_name }}</td>
-                                        <td>{{ $c->Discription }}</td>
-                                        <td>{{ $c->Category_id }}</td>
-                                        <td><a href="click_edit_sub/{{ $c->id }}" class="btn btn-lg btn-success">Edit</a></td>
-                                        <td><a href="click_delete_sub/{{ $c->id }}" class="btn btn-lg btn-danger">Delete</a></td>
+                                        <td>{{ $c['SubCategory_name'] }}</td>
+                                        <td>{{ $c['Discription'] }}</td>
+                                        <td>{{ $c['Category_id'] }}</td>
+                                        <td><a href="click_edit_sub/{{ $c['id'] }}" class="btn btn-lg btn-success">Edit</a></td>
+                                        <td><a href="click_delete_sub/{{ $c['id'] }}" class="btn btn-lg btn-danger">Delete</a></td>
                                     </tr>
                                     <?php
                                     }

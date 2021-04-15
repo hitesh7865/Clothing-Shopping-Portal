@@ -1,116 +1,72 @@
-# YouRHired
+<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-Built with Larvel, YouRHired is a product to be used with or without Carbonate. The main aim of YouRHired is to allow companies to fetch their mailboxes and scan the emails related to Job postings and automate certain tasks such as
-- Sending a thank-you email
-- Asking questions when a Job Application is received
-- Screening/Hiring/Rejecting the candidate right from the Application
-- Integrating it with Carbonate via API calls to add them into the organization
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-## Installation
+## About Laravel
 
-1) Clone the repo using git commands and checkout the master or develop branch.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-```bash
-git fetch && git checkout -f origin/{YOUR_BRANCH}
-```
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-2) Make sure mysql is installed with mysql command line tool and create a database with user having access specific to this database only.
+## Learning Laravel
 
-3) Copy .env.example file and update the ones [ Not exclusive ]
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-```env
-APP_URL
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-DB_DATABASE
-DB_USERNAME
-DB_PASSWORD
+## Laravel Sponsors
 
-MAIL_READ_DAYS
-BROADCAST_DRIVER
-QUEUE_DRIVER
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-MAIL_DRIVER
-MAIL_HOST
-MAIL_PORT
-MAIL_USERNAME
-MAIL_PASSWORD
-MAIL_FROM_NAME
-MAIL_FROM_ADDRESS
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- [UserInsights](https://userinsights.com)
+- [Fragrantica](https://www.fragrantica.com)
+- [SOFTonSOFA](https://softonsofa.com/)
+- [User10](https://user10.com)
+- [Soumettre.fr](https://soumettre.fr/)
+- [CodeBrisk](https://codebrisk.com)
+- [1Forge](https://1forge.com)
+- [TECPRESSO](https://tecpresso.co.jp/)
+- [Runtime Converter](http://runtimeconverter.com/)
+- [WebL'Agence](https://weblagence.com/)
+- [Invoice Ninja](https://www.invoiceninja.com)
+- [iMi digital](https://www.imi-digital.de/)
+- [Earthlink](https://www.earthlink.ro/)
+- [Steadfast Collective](https://steadfastcollective.com/)
+- [We Are The Robots Inc.](https://watr.mx/)
+- [Understand.io](https://www.understand.io/)
+- [Abdel Elrafa](https://abdelelrafa.com)
+- [Hyper Host](https://hyper.host)
 
-QUEUE_SHELL=shell_emails
-QUEUE_IMMEDIATE=shell_emails_immediate
-APP_TIME_ZONE=UTC
-```
+## Contributing
 
-## Setup
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Note : All the commands are run once you are in the project directory :)
+## Security Vulnerabilities
 
-1) Install the vendor files using
-```bash
-composer install --ignore-platform-reqs
-```
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-2) Install frontend Gulp dependencies
+## License
 
-```bash
-npm install
-```
-3) Install Bower frontend dependencies
-
-```bash
-bower install
-```
-
-4) Make the database up and running 
-```bash
-php artisan migrate
-```
-
-5) Run the Gulp Build command to compile all the assets
-```bash
-gulp build
-```
-
-6) Setting up Queues and Workers
-We are using **Database** as a **queue** instead of **Reddis**
-
-    ##### Local Environment
-    Queue is Database setup in .env file.
-
-    Run the following to start a worker for Database queue with two different queues used in the Codebase [shell_emails_immediate,shell_emails]
-
-    ```bash
-
-     php artisan queue:work database --tries=1 --queue=shell_emails_immediate,shell_emails
-
-    ```
-    
-    ##### Stage/Production
-    
-    ```bash
-    pm2 start laravel-queue-worker.yml 
-    ```
-    
-    ##### Logging
-    
-    ```bash
-    pm2 log
-    ```
-    
-    ##### Restarting
-    
-    ```bash
-    pm2 restart all
-    ```
-    
-    ##### Kill and Start [ Needed when the paths have changed, or processes do not start/show errored ]
-    
-    ```bash
-    pm2 kill
-    pm2 start laravel-queue-worker.yml 
-    ```
-    
-    If used supervisor, please follow the following :   
-    [Guide in Larvel 5.4 Documentation](https://laravel.com/docs/5.4/queues#supervisor-configuration)
+The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
