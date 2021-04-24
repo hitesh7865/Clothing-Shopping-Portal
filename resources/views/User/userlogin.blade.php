@@ -60,29 +60,15 @@
 					</button>
 				</div>
 				<div class="text-center p-t-57 p-b-20">
-					<span class="txt1">
-						Or
-					</span>
-					<br>
 					<span>
 						<a href="/forgetpassword" class="txt1">
 							<strong>Forget Password</strong>
 						</a>
 					</span>
 				</div>
-				
-				<div class="flex-c p-b-112">
-					<a href="#" class="login100-social-item">
-						<i class="fa fa-facebook-f"></i>
-					</a>
-
-					<a href="#" class="login100-social-item">
-						<img src="/new-css/images/icons/icon-google.png" alt="GOOGLE">
-					</a>
-				</div>
 
 				<div class="text-center">
-					<a href="user-register" class="txt2 hov1">
+					<a href="/user-register" class="txt2 hov1">
 						Register New Account
 					</a>
 				</div>
