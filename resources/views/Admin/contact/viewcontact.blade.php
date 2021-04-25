@@ -49,7 +49,7 @@
                                             <td>{{ $c->subject }}</td>
                                             <td>{{ $c->message }}</td>
                                             <td><a href="/replymail/{{ $c->id }}" class="btn btn-lg btn-primary">Reply</a></td>
-                                            <td><a href="/deletedetails/{{ $c->id }}" class="btn btn-lg btn-danger">Delete</a></td>
+                                            <td><a href="/contactdelete/{{ $c->id }}" class="btn btn-lg btn-danger">Delete</a></td>
                                         </tr>
                                         <?php 
                                         }

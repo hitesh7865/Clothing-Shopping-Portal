@@ -188,27 +188,44 @@ class UserController extends Controller
 
     function usermail($id)
     {
-        $email = Users::where('id',$id)->select('email')->value('email');
-        Mail::to($email)->send((new notifyuser('User Notify Successfully..',)));
-        return back();
+        $userdata = Users::where('id',$id)->get();
+        return view('/admin.user.usermailreply',['udata'=>$userdata]);
+    }
+
+    function userreplymail(Request $req,$id)
+    {
+        $Uname = $req->input('Uname');
+        $Umail = $req->input('Umail');
+        $Umessage = $req->input('Umessage');
+
+        Mail::to($Umail)->send((new notifyuser('User Mail Reply Successfully..',$Uname,$Umessage)));
+        
+        $userdata = Users::get()->toArray();
+        return view('/admin.user.viewuser',['user'=>$userdata]);
     }
 
     function userblock($id)
     {
         $email = Users::where('id',$id)->select('email')->value('email');
+        $userdata = Users::where('id',$id)->get();
+
+        $name = $userdata[0]->Firstname;
+        
         if(Users::where('id',$id)->select('status')->value('status')==0)
         {
             $status=1;
             $user = DB::update('update user set status=? where id=?',[$status,$id]);
-            Mail::to($email)->send((new unblockuser('User Unblock Successfully..',)));
-            return back();
+            Mail::to($email)->send((new unblockuser('User Unblock..',$name)));
+            $userdata = Users::get()->toArray();
+            return view('/admin.user.viewuser',['user'=>$userdata]);
         }
         else
         {
             $status=0;
             $user = DB::update('update user set status=? where id=?',[$status,$id]);
-            Mail::to($email)->send((new blockuser('User Block Successfully..',)));
-            return back();
+            Mail::to($email)->send((new blockuser('User Block..',$name)));
+            $userdata = Users::get()->toArray();
+            return view('/admin.user.viewuser',['user'=>$userdata]);
         }
         
     }

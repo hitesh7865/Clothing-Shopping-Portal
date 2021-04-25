@@ -147,13 +147,14 @@ Route::get('/user-dispatch',function(){
 
 //UserControllers
 Auth::Routes();
-Route::get('/user', 'UserController@index')->name('/');
+Route::get('/user', 'UserController@index')->name('/user');
 Route::post('/Rdata','UserController@Rdata');
 Route::post('/logins','UserController@logins');
 Route::get('/logins','UserController@list');
 Route::post('/updatepass','UserController@resetpassword');
 Route::match(['get','post'],'forget','UserController@forget');
 Route::get('/user_mail/{id}','UserController@usermail');
+Route::post('/userreplymail/{id}','UserController@userreplymail');
 Route::get('/user_block/{id}','UserController@userblock');
 Route::post('/addcontact','UserController@addcontact');
 Route::get('/userlogout','UserController@userlogout');
@@ -171,6 +172,8 @@ Route::post('/updateorder/{id}','AdminController@updateorder');
 Route::get('/view_user','AdminController@viewuser');
 Route::get('/contactus','AdminController@contactus');
 Route::get('/replymail/{id}','AdminController@replymail');
+Route::post('/mailfire/{id}','AdminController@mailfire');
+Route::get('/contactdelete/{id}','AdminController@contactdelete');
 Route::get('/logout','AdminController@logout');
 
 //mainpagecontroller

@@ -66,13 +66,13 @@ class Bookingcontroller extends Controller
 
             $name = $userdetails->Firstname;
             $email = $userdetails->email;
-
+            
             $md = ['email'=>$email,'billdata'=>$billdata,'ud'=>$name];
-
+            // echo '<pre>';
+            // print_r($md);die;
             Mail::send('User.Booking',$md,function($message)use($email)
             {
-                $message->to($email)->subject('Order Confirmation...');
-                
+                $message->to($email)->subject('Order Confirmation...');   
             });
         return redirect('/user');
     }

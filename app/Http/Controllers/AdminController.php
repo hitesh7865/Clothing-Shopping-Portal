@@ -11,6 +11,7 @@ use App\orderdata;
 use App\orderitem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use App\Mail\replymail;
 use Illuminate\Http\UploadedFile;
 use Image;
 use PDF;
@@ -113,23 +114,43 @@ class AdminController extends Controller
     function add_brand(Request $req)
     {
         $cname = $req->input('brand_name');
+        $rct = DB::table('brand')
+                ->where('brand_name','=',$cname)
+                ->count();
+        if($rct==0)
+        {
+            $data = array('brand_name'=>$cname);
+            $dt = DB::table('brand')->insert($data);
 
-        $data = array('brand_name'=>$cname);
-        $dt = DB::table('brand')->insert($data);
-
-        $response['success'] = 'Details have been saved! Chillax.';
-        return redirect('/addbrand')->with($response);
+            $success['success'] = 'Details have been saved! Chillax.';
+            return view('/admin.brand.addbrand')->with($success);
+        }
+        else
+        {
+            $error['error'] = "This Brand Already Exist...";
+            return view('/admin.brand.addbrand')->with($error);
+        }
     }
     
     function add_color(Request $req)
     {
         $cname = $req->input('Colorname');
+        $rct = DB::table('color')
+                ->where('Color','=',$cname)
+                ->count();
+        if($rct==0)
+        {
+            $data = array('color'=>$cname);
+            $dt = DB::table('color')->insert($data);
 
-        $data = array('Color'=>$cname);
-        $dt = DB::table('color')->insert($data);
-
-        $response['success'] = 'Details have been saved! Chillax.';
-        return redirect('/addcolor')->with($response);
+            $success['success'] = 'Details have been saved! Chillax.';
+            return view('/admin.color.addcolor')->with($success);
+        }
+        else
+        {
+            $error['error'] = "This Color Already Exist...";
+            return view('/admin.color.addcolor')->with($error);
+        }
     }
 
     public function vieworder($id)
@@ -179,7 +200,26 @@ class AdminController extends Controller
 
     function replymail($id)
     {
-           
+        $contact_data = DB::select('select * from contactus where id=?',[$id]); 
+        return view('/admin.contact.replypage',['cdata'=>$contact_data]);
+    }
+
+    function mailfire(Request $req,$id)
+    {
+        $cname = $req->input('Cname');
+        $cmail = $req->input('Cmail');
+        $cmessage = $req->input('Cmessage');
+
+        Mail::to($cmail)->send((new replymail('Contact Mail Reply Successfully..',$cname,$cmessage)));
+        
+        $contact_data = DB::select('select * from contactus');
+        return view('/admin.contact.viewcontact',['cdata'=>$contact_data]);  
+    }
+
+    function contactdelete($id)
+    {
+        DB::delete('delete from contactus where id=?',[$id]);
+        return back();
     }
 
     function logout()

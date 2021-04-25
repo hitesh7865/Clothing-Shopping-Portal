@@ -166,7 +166,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                                             <tr>
                                                 <td align="left" width="472" height="" valign="top" style="width: 472px; height: auto; font-family: NotoSans-Bold; font-weight: bold;
                                                 line-height: normal; font-size: 24px; color: #000000; " class="block">
-                                                    You have new applicants
+                                                    Dear {{$uname}}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -177,41 +177,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                                             <tr>
                                                 <td align="left" width="472" height="" valign="top" style="width: 472px; height: auto; font-family: Roboto-Regular; font-weight: normal;
                                                 line-height: 1.78; font-size: 18px; color: #000000; " class="block">
-                                                   Your opportunity post is getting some traction! There are 
-                                                   new applicants interested in your opportunity. You can review 
-                                                   their application on YourHired, and start your conversation 
-                                                   via e-mail.
+                                                {{ $umessage }}
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td align="left" width="472" height="95" valign="top" style="width: 472px; height: 95px; line-height: 95px;" 
-                                                class="block">
-                                                    &nbsp;
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left" width="472" height="" valign="top" style="width: 472px; height: auto; font-family: Roboto-Regular; font-weight: normal;
-                                                line-height: 1.78; font-size: 18px; color: #000000; " class="block">
-                                                  We hope you find a suitable candidate. Please <a href="#" target="_blank" style="font-family: Roboto-Regular; font-weight: normal;
-                                                    line-height: 1.6; font-size: 20px; color: #b88200; text-align: center; text-decoration: none;" >contact us</a> if 
-                                                  you have any questions.
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left" width="472" height="95" valign="top" style="width: 472px; height: 95px; line-height: 95px;" 
-                                                class="block">
-                                                    &nbsp;
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left" width="472" height="" valign="top" style="width: 472px; height: auto; " class="block">
-                                                    <a href="#" target="_blank">
-                                                        <img src="http://testground.me/edm/ITS/new-opportunities/images/button@2x.png" alt="Button Image" width="472" height="52 " 
-                                                    style="border: 0px; width: 472px; height: 52px;" class="img_scale">
-                                                    </a>
-                                                    
-                                                </td>
-                                            </tr>
+                                           
                                             <tr>
                                                 <td align="left" width="472" height="24" valign="top" style="width: 472px; height: 24px; line-height: 24px;" 
                                                 class="block">
@@ -234,7 +203,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                                                 <td align="center" width="472" height="" valign="top" style="width: 472px; height: auto; font-family: NotoSans-Bold ; font-weight: bold;
                                                 line-height: 1.6; font-size: 18px; color: #b88200; text-align: center;" class="block">
                                                     <a href="#" target="_blank" style="font-family: NotoSans-Bold ; font-weight: bold;
-                                                    line-height: 1.6; font-size: 18px; color: #b88200; text-align: center; text-decoration: none;">Idaratut Tareef al Shakhsi (ITS)</a>
+                                                    line-height: 1.6; font-size: 18px; color: #b88200; text-align: center; text-decoration: none;">Divisima Clothes Shop</a>
                                                     
                                                 </td>
                                             </tr>
@@ -284,23 +253,23 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                                         <tr>
                                             <td align="center" width="482" height="" valign="top" style="width: 482px; height: auto; font-family: NotoSans; font-weight: normal;
                                             line-height: 1.75; font-size: 16px; color: #835d00; text-align: center; " class="block">
-                                                Dawat e Hadiyah, Amatullah Manzil, 
+                                               Near Vadilal Hospital, Mirzapur 
                                             </td>
                                         </tr>
                                         <tr>
                                             <td align="center" width="482" height="" valign="top" style="width: 482px; height: auto; font-family: NotoSans; font-weight: normal;
                                             line-height: 1.75; font-size: 16px; color: #835d00; text-align: center; " class="block">
-                                                Ground Floor, 65, Bazargate Street, Fort, Mumbai - 400001 India.
+                                                Ahemadabad-382225 India
                                             </td>
                                         </tr>
                                         <tr>
                                             <td align="center" width="482" height="" valign="top" style="width: 482px; height: auto; font-family: NotoSans; font-weight: normal;
                                             line-height: 1.75; font-size: 16px; color: #835d00; text-align: center; " class="block">
-                                                <a href="tel:+912243425152" target="_blank" style="font-family: NotoSans; font-weight: normal;
-                                                line-height: 1.75; font-size: 16px; color: #835d00; text-align: center; text-decoration: none;">+91 22 43425152</a> |
+                                                <a href="tel:+919874563210" target="_blank" style="font-family: NotoSans; font-weight: normal;
+                                                line-height: 1.75; font-size: 16px; color: #835d00; text-align: center; text-decoration: none;">+91 98 74563210</a> |
 
-                                                <a href="mailto:support@its52.com" target="_blank" style="font-family: NotoSans; font-weight: normal;
-                                                line-height: 1.75; font-size: 16px; color: #835d00; text-align: center; text-decoration: none;">support@its52.com</a>
+                                                <a href="mailto:dcs@contact.com" target="_blank" style="font-family: NotoSans; font-weight: normal;
+                                                line-height: 1.75; font-size: 16px; color: #835d00; text-align: center; text-decoration: none;">dcs@contact.com</a>
                                             </td>
                                         </tr>
                                         <tr>

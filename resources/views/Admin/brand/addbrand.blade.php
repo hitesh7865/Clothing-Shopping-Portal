@@ -9,7 +9,8 @@
                             <li class="breadcrumb-item active">Dashboard/Add Brand</li>
                         </ol>
                 
-                
+                    <span style="color:green">@if(isset($success)){{ $success }}@endif</span>
+                    <span style="color:red">@if(isset($error)){{ $error }}@endif</span>
                     <form role="form" action="add_brand" method="post">
                     @csrf
                         <div class="form-group row">

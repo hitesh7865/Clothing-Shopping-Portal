@@ -2,37 +2,58 @@
 @include('Admin.Layouts.header')
 @include('Admin.Layouts.sidenav')
             <div id="layoutSidenav_content">
+            <?php
+            foreach($udata as $c)
+            {
+                $id = $c->id;
+                $fname = $c->Firstname;
+                $lname = $c->Lastname;
+                $email = $c->email;
+            }
+            ?>
                 <main>
                 <div class="container-fluid">
-                        <h1 class="mt-4">Add Color</h1>
+                        <h1 class="mt-4">Reply Contact Person</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard/Add Color</li>
+                            <li class="breadcrumb-item active">Dashboard/Reply Contact Person</li>
                         </ol>
-                
-                    <span style="color:green">@if(isset($success)){{ $success }}@endif</span>
-                    <span style="color:red">@if(isset($error)){{ $error }}@endif</span>
-                    <form role="form" action="add_color" method="post">
+                    <form role="form" action="/userreplymail/{{ $id }}" method="post">
                     @csrf
                         <div class="form-group row">
-                            <label class="col-xl-3">Color Name<i class="text-danger">*</i></label>
+                            <label class="col-xl-3">User Name<i class="text-danger">*</i></label>
                             <div class="form-group">
                                 <div class="col-xs-7">
-                                    <input name="Colorname" type="text" class="form-control" id="category_name" placeholder="Blue/Red" required>
+                                    <input name="Uname" type="text" class="form-control" value="{{ $fname }} {{$lname}}" readonly>
                                 </div>
                             </div>
                         </div>
-                                                    
+                        
+                        <div class="form-group row">
+                            <label class="col-xl-3">User E-Mail<i class="text-danger">*</i></label>
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <input name="Umail" type="text" class="form-control" value="{{ $email }}" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label class="col-xl-3">User Reply Message<i class="text-danger">*</i></label>
+                            <div class="form-group">
+                                <div class="col-xs-7">
+                                    <textarea class="textarea" placeholder="Place some text here" name="Umessage" style="width: 300%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                            
                         <div class="text-center">
                             <div class="col-xl-8">
-                                <input type="submit" class="btn btn-lg btn-success" name="Save" value="Save"/>
+                                <input type="submit" class="btn btn-lg btn-success" name="Save" value="Send"/>
                                 <input type="reset" class="btn btn-lg btn-danger" name="Reset"/>                                
                             </div>   
                         </div>
                     </form>
-                    <div class="text-right"> 
-                        <a href="/view-color"><input type="submit" style="background-color:purple" class="btn btn-lg btn-success" name="View" value="View Color"/></a>
-                    </div>
-                </div>
+                </div> 
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">

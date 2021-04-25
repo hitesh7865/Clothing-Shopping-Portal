@@ -49,8 +49,8 @@
                                             <td>{{ $u['email'] }}</td>
                                             <td>{{ $u['Address'] }}</td>
                                             <td>{{ $u['mobile'] }}</td>
-                                            <td><a href="user_mail/ {{ $u['id'] }}" class="btn btn-lg btn-success">MailBox</a></td>
-                                            <td><a href="user_block/ {{ $u['id'] }}" class="btn btn-lg btn-danger">Block/Unblock</a></td>
+                                            <td><a href="/user_mail/ {{ $u['id'] }}" class="btn btn-lg btn-success">MailBox</a></td>
+                                            <td><a href="/user_block/ {{ $u['id'] }}" class="btn btn-lg btn-danger">Block/Unblock</a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
