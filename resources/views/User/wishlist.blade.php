@@ -69,11 +69,7 @@
 					<div class="up-item">
 						<div class="shopping-card">
 							<i class="flaticon-bag"></i>
-							@if(isset($ct))
 							<span>{{ $ct }}</span>
-							@else
-							<span>0</span>
-							@endif
 						</div>
 						<a href="/Shoppingcart">Shopping Cart</a>
 					</div>
@@ -93,7 +89,8 @@
 				<!-- menu -->
 				<ul class="main-menu">
 					<li><a href="/user">Home</a></li>
-					<li><a href="/user-contact">Contact Page</a></li>	
+					<li><a href="/user-contact">Contact Us</a>
+					</li>
 				</ul>
 			</div>
 		</nav>
@@ -101,130 +98,72 @@
 	<!-- Header section end -->
 
 
-	<!-- Page info -->
-	<div class="page-top-info">
-		<div class="container">
-			<h4>Contact</h4>
-			<div class="site-pagination">
-				<a href="/user">Home</a> /
-				<a href="/user-contact">Contact</a>
-			</div>
-		</div>
-	</div>
-	<!-- Page info end -->
 
-
-	<!-- Contact section -->
-	<section class="contact-section">
+	<!-- Hero section -->
+	<!-- cart section end -->
+	<section class="cart-section spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6 contact-info">
-					<h3>Get in touch</h3>
-					<p>Near Vadilal Hospital, Mirzapur, Ahemadabad</p>
-					<p>+91 9874563210</p>
-					<p>dcs@contact.com</p>
-					<div class="contact-social">
-						<a href="#"><i class="fa fa-pinterest"></i></a>
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-dribbble"></i></a>
-						<a href="#"><i class="fa fa-behance"></i></a>
-					</div>
-					<form class="contact-form" method="post" action="/addcontact">
-					@csrf
-						<input type="text" placeholder="Your name" name="name">
-						<input type="text" placeholder="Your e-mail" name="email">
-						<input type="text" placeholder="Subject" name="subject">
-						<textarea placeholder="Message" name="message"></textarea>
-						<button class="site-btn" type="submit">SEND NOW</button>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14376.077865872314!2d-73.879277264103!3d40.757667781624285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1546528920522" style="border:0" allowfullscreen></iframe></div>
-	</section>
-	<!-- Contact section end -->
-
-
-	<!-- Related product section -->
-	<section class="related-product-section spad">
-		<div class="container">
-			<div class="section-title">
-				<h2>Your Favorites</h2>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<div class="tag-new">New</div>
-							<img src="img/product/2.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Black and White Stripes Dress</p>
+				<div class="col-lg-8">
+					<div class="cart-table">
+						<h3>Your Cart</h3>
+						<div class="cart-table-warp">
+							<table>
+							<thead>
+								<tr>
+									<th class="product-th">Product</th>
+									<th class="total-th">Price</th>
+                                    <th class="total-th">Add To Cart</th>
+                                    <th class="total-th">Remove</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php
+							foreach($data as $d)
+							{
+							?>
+								<tr>
+									<td class="product-col">
+										<img src="{{ asset('uploads/productimage/'.$d->photo) }}" alt="image">
+										<div class="pc-title">
+											<h4>{{ $d->Product_name }}</h4>
+											<p>{{ $d->Price }}</p>
+										</div>
+									</td>
+									<td class="total-col"><h4>₹{{ $d->Price }}</h4></td>
+									<td class="total-col">
+										<h4>
+											<form action="/addtocart/{{ $d->product_id }}" method="post">
+											@csrf
+												<input type="number" value="1" name="qty" hidden/>
+												<input type="text" value="{{$d->id}}" name="wid" hidden/>
+												<button type="submit" name="submit">Add To Cart</button>
+											</form>
+										</h4>
+									</td>
+									<td class="total-col"><h4><a href="/deletewishlist/{{ $d->id }}">Remove</a></h4></td>
+								</tr>
+							<?php
+							}
+							?>
+							</tbody>
+						</table>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/5.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/9.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/1.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
+				<div class="col-lg-4 card-right">
+					<a href="/user" class="site-btn sb-dark">Continue shopping</a>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Related product section end -->
-
+	<!-- cart section end -->
 
 	<!-- Footer section -->
 	<section class="footer-section">
 		<div class="container">
 			<div class="footer-logo text-center">
-				<a href="/index"><img src="/img/logo-light.png" alt=""></a>
+				<a href="index.html"><img src="./img/logo-light.png" alt=""></a>
 			</div>
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">
@@ -311,7 +250,6 @@
 					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
 					<a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
 				</div>
-
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> 
 <p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -324,14 +262,14 @@
 
 
 	<!--====== Javascripts & Jquery ======-->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.slicknav.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.nicescroll.min.js"></script>
-	<script src="js/jquery.zoom.min.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script src="js/main.js"></script>
+	<script type="text/javascript" src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/jquery.slicknav.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/owl.carousel.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/jquery.zoom.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 
 	</body>
 </html>

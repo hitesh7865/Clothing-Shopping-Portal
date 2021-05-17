@@ -178,6 +178,11 @@ Route::get('/logout','AdminController@logout');
 
 //mainpagecontroller
 Route::get('/AdminPanel', 'mainpagecontroller@index');
+Route::get('/addwishlist/{id}','mainpagecontroller@addwishlist');
+Route::get('/wishlist','mainpagecontroller@viewwishlist');
+Route::post('/addtocart/{id}','mainpagecontroller@addtocart');
+Route::get('/deletewishlist/{id}','mainpagecontroller@deletewishlist');
+Route::post('/searchbox','mainpagecontroller@searchbox');
 
 //CategoryController
 Route::get('/view-category','Categorycontroller@index');
@@ -188,7 +193,7 @@ Route::get('/click_delete/{id}','Categorycontroller@dcategory');
 //SubCategoryController
 Route::get('/addsubcategory','Subcategorycontroller@index');
 Route::get('/view-subcategory','Subcategorycontroller@view');
-Route::get('click_edit_sub/{id}','Subcategorycontroller@ucategory');
+Route::get('/click_edit_sub/{id}','Subcategorycontroller@ucategory');
 Route::post('/updatesub/{id}','Subcategorycontroller@upcategory');
 Route::get('/click_delete_sub/{id}','Subcategorycontroller@dcategory');
 
