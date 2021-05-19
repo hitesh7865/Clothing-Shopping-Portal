@@ -106,7 +106,7 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="cart-table">
-						<h3>Your Cart</h3>
+						<h3>Your Wishlist</h3>
 						<div class="cart-table-warp">
 							<table>
 							<thead>
